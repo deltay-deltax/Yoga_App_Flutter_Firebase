@@ -1,0 +1,36 @@
+name: fitness_app
+description: A fitness app with Firebase integration
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  firebase_core: ^2.27.0
+  firebase_auth: ^4.17.8
+  cloud_firestore: ^4.15.8
+  firebase_messaging: ^14.7.19
+
+  # Payment
+  flutter_stripe: ^10.1.1
+  http: ^1.1.0
+
+  # QR Code - Using your preferred packages
+  qr_flutter: ^4.1.0 # For QR generation
+  mobile_scanner: ^5.1.1 # For QR scanning (replaces qr_code_scanner)
+
+  # Others
+  get: ^4.6.6
+  intl: ^0.19.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
