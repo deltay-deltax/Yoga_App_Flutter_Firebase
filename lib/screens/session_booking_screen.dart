@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:qr_flutter/qr_flutter.dart'; // Using your preferred package
+import 'package:qr_flutter/qr_flutter.dart';
 import '../services/firebase_service.dart';
 
 class SessionBookingScreen extends StatelessWidget {
@@ -39,22 +39,37 @@ class SessionBookingScreen extends StatelessWidget {
       context: context,
       builder: (context) => AlertDialog(
         title: Text('Booking Confirmed'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text('$sessionType session booked successfully!'),
-            SizedBox(height: 16),
-            // Using QrImageView (updated widget name in qr_flutter 4.1.0)
-            QrImageView(
-              data: qrCode,
-              version: QrVersions.auto,
-              size: 200.0,
-              gapless: false,
-              errorCorrectionLevel: QrErrorCorrectLevel.H,
-            ),
-            SizedBox(height: 8),
-            Text('Show this QR code for attendance'),
-          ],
+        contentPadding: EdgeInsets.all(20),
+        content: Container(
+          width: 280, // Fixed width
+          height: 320, // Fixed height
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                '$sessionType session booked successfully!',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 20),
+              Container(
+                width: 200,
+                height: 200,
+                child: QrImageView(
+                  data: qrCode,
+                  version: QrVersions.auto,
+                  gapless: false,
+                ),
+              ),
+              SizedBox(height: 15),
+              Text(
+                'Show this QR code for attendance',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+              ),
+            ],
+          ),
         ),
         actions: [
           TextButton(
